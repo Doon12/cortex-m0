@@ -1,0 +1,80 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+APSR	iss.h	/^struct APSR {$/;"	s
+APSR	iss.h	/^} APSR;$/;"	v	typeref:struct:APSR
+AS	test/Makefile	/^AS=$(CROSS_COMPILE)as$/;"	m
+C	iss.h	/^  int C;$/;"	m	struct:APSR
+CC	test/Makefile	/^CC=$(CROSS_COMPILE)gcc$/;"	m
+CFLAGS	test/Makefile	/^CFLAGS = \\$/;"	m
+CROSS_COMPILE	test/Makefile	/^CROSS_COMPILE=arm-none-eabi-$/;"	m
+INST	iss.h	59;"	d
+INST32	iss.h	62;"	d
+INST32_	iss.h	63;"	d
+INST_	iss.h	60;"	d
+ISS_H	iss.h	15;"	d
+LDFLAGS	test/Makefile	/^LDFLAGS = -Wl,--gc-sections -nostartfiles$/;"	m
+LDSCRIPT	test/Makefile	/^LDSCRIPT = linkerscript.ld$/;"	m
+LR	iss.h	34;"	d
+MEM_SIZE	iss.h	37;"	d
+MSB	iss.h	65;"	d
+N	iss.h	/^  int N;$/;"	m	struct:APSR
+OBJCOPY	test/Makefile	/^OBJCOPY=$(CROSS_COMPILE)objcopy$/;"	m
+OBJDUMP	test/Makefile	/^OBJDUMP=$(CROSS_COMPILE)objdump$/;"	m
+OBJS	test/Makefile	/^OBJS = bubble_sort.o$/;"	m
+PC	iss.h	35;"	d
+R	iss.h	/^uint32_t R[16];$/;"	v
+Reset_Handler	test/startup.s	/^Reset_Handler:$/;"	l
+SP	iss.h	33;"	d
+SRCS	test/Makefile	/^SRCS = bubble_sort.c$/;"	m
+STARTUP	test/Makefile	/^STARTUP = startup.s$/;"	m
+TARGET	test/Makefile	/^TARGET=bubble_sort$/;"	m
+V	iss.h	/^  int V;$/;"	m	struct:APSR
+Z	iss.h	/^  int Z;$/;"	m	struct:APSR
+__HeapBase	test/startup.s	/^__HeapBase:$/;"	l
+__HeapLimit	test/startup.s	/^__HeapLimit:$/;"	l
+__StackLimit	test/startup.s	/^__StackLimit:$/;"	l
+__StackTop	test/startup.s	/^__StackTop:$/;"	l
+__isr_vector	test/startup.s	/^__isr_vector:$/;"	l
+b_unconditional	thumb.c	/^void b_unconditional(uint16_t inst)$/;"	f
+bl	thumb.c	/^void bl(uint32_t inst)$/;"	f
+branch	iss.h	/^int branch;$/;"	v
+cycle	iss.h	/^int cycle;$/;"	v
+extract16	inst.c	/^uint16_t extract16(uint16_t data, int end, int start)$/;"	f
+extract16_	inst.c	/^uint16_t extract16_(uint16_t data, int pos)$/;"	f
+extract32	inst.c	/^uint32_t extract32(uint32_t data, int end, int start)$/;"	f
+extract32_	inst.c	/^uint32_t extract32_(uint32_t data, int pos)$/;"	f
+fetch	inst.c	/^uint16_t fetch(void)$/;"	f
+init_mem	core.c	/^void init_mem(char *mem_name)$/;"	f
+init_register	core.c	/^void init_register(void)$/;"	f
+main	core.c	/^int main(int argc, char *argv[])$/;"	f
+main	test/B2H_CONVERTER.c	/^int main(int argc, char *argv[]){$/;"	f
+main	test/bubble_sort.c	/^int main(void)$/;"	f
+mem	iss.h	/^uint8_t *mem;$/;"	v
+process	thumb.c	/^void process(uint16_t inst)$/;"	f
+read_byte	memory.c	/^uint32_t read_byte(uint32_t addr)$/;"	f
+read_halfword	memory.c	/^uint32_t read_halfword(uint32_t addr)$/;"	f
+read_word	memory.c	/^uint32_t read_word(uint32_t addr)$/;"	f
+savedPC	iss.h	/^uint32_t savedPC;$/;"	v
+signExtend32	iss.h	69;"	d
+sign_extend	inst.c	/^uint32_t sign_extend(uint32_t a, int length)$/;"	f
+test0	test/bubble_sort.c	/^int test0 __attribute__ ((section ("VERIFY0")));$/;"	v
+test1	test/bubble_sort.c	/^int test1 __attribute__ ((section ("VERIFY1")));$/;"	v
+test2	test/bubble_sort.c	/^int test2 __attribute__ ((section ("VERIFY2")));$/;"	v
+test3	test/bubble_sort.c	/^int test3 __attribute__ ((section ("VERIFY3")));$/;"	v
+test4	test/bubble_sort.c	/^int test4 __attribute__ ((section ("VERIFY4")));$/;"	v
+test5	test/bubble_sort.c	/^int test5 __attribute__ ((section ("VERIFY5")));$/;"	v
+test6	test/bubble_sort.c	/^int test6 __attribute__ ((section ("VERIFY6")));$/;"	v
+test7	test/bubble_sort.c	/^int test7 __attribute__ ((section ("VERIFY7")));$/;"	v
+test8	test/bubble_sort.c	/^int test8 __attribute__ ((section ("VERIFY8")));$/;"	v
+test9	test/bubble_sort.c	/^int test9 __attribute__ ((section ("VERIFY9")));$/;"	v
+to_little	test/B2H_CONVERTER.c	/^int to_little(int bits32){$/;"	f
+updatePC	inst.c	/^void updatePC(void)$/;"	f
+view_reg	core.c	/^void view_reg(uint16_t inst)$/;"	f
+write_byte	memory.c	/^void write_byte(uint32_t addr, uint32_t value)$/;"	f
+write_halfword	memory.c	/^void write_halfword(uint32_t addr, uint32_t value)$/;"	f
+write_word	memory.c	/^void write_word(uint32_t addr, uint32_t value)$/;"	f
+zeroExtend32	iss.h	68;"	d
