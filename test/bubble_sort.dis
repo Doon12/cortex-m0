@@ -1,0 +1,414 @@
+
+bubble_sort.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__isr_vector>:
+   0:	00010000 	andeq	r0, r1, r0
+   4:	000000d1 	ldrdeq	r0, [r0], -r1
+   8:	000000f1 	strdeq	r0, [r0], -r1
+   c:	000000f3 	strdeq	r0, [r0], -r3
+	...
+  2c:	000000f5 	strdeq	r0, [r0], -r5
+	...
+  38:	000000f7 	strdeq	r0, [r0], -r7
+  3c:	000000f9 	strdeq	r0, [r0], -r9
+  40:	000000fb 	strdeq	r0, [r0], -fp
+  44:	000000fd 	strdeq	r0, [r0], -sp
+  48:	000000ff 	strdeq	r0, [r0], -pc	; <UNPREDICTABLE>
+  4c:	00000101 	andeq	r0, r0, r1, lsl #2
+  50:	00000103 	andeq	r0, r0, r3, lsl #2
+  54:	00000105 	andeq	r0, r0, r5, lsl #2
+  58:	00000107 	andeq	r0, r0, r7, lsl #2
+  5c:	00000109 	andeq	r0, r0, r9, lsl #2
+  60:	0000010b 	andeq	r0, r0, fp, lsl #2
+  64:	0000010d 	andeq	r0, r0, sp, lsl #2
+  68:	0000010f 	andeq	r0, r0, pc, lsl #2
+  6c:	00000111 	andeq	r0, r0, r1, lsl r1
+  70:	00000113 	andeq	r0, r0, r3, lsl r1
+  74:	00000115 	andeq	r0, r0, r5, lsl r1
+  78:	00000117 	andeq	r0, r0, r7, lsl r1
+  7c:	00000119 	andeq	r0, r0, r9, lsl r1
+  80:	0000011b 	andeq	r0, r0, fp, lsl r1
+  84:	0000011d 	andeq	r0, r0, sp, lsl r1
+  88:	0000011f 	andeq	r0, r0, pc, lsl r1
+  8c:	00000121 	andeq	r0, r0, r1, lsr #2
+  90:	00000123 	andeq	r0, r0, r3, lsr #2
+  94:	00000125 	andeq	r0, r0, r5, lsr #2
+  98:	00000127 	andeq	r0, r0, r7, lsr #2
+  9c:	00000129 	andeq	r0, r0, r9, lsr #2
+  a0:	0000012b 	andeq	r0, r0, fp, lsr #2
+  a4:	0000012d 	andeq	r0, r0, sp, lsr #2
+  a8:	0000012f 	andeq	r0, r0, pc, lsr #2
+  ac:	00000131 	andeq	r0, r0, r1, lsr r1
+  b0:	00000133 	andeq	r0, r0, r3, lsr r1
+  b4:	00000135 	andeq	r0, r0, r5, lsr r1
+  b8:	00000137 	andeq	r0, r0, r7, lsr r1
+  bc:	00000139 	andeq	r0, r0, r9, lsr r1
+  c0:	0000fe00 	andeq	pc, r0, r0, lsl #28
+  c4:	00010000 	andeq	r0, r1, r0
+  c8:	000002a0 	andeq	r0, r0, r0, lsr #5
+  cc:	000012a0 	andeq	r1, r0, r0, lsr #5
+
+000000d0 <Reset_Handler>:
+  d0:	2000      	movs	r0, #0
+  d2:	2100      	movs	r1, #0
+  d4:	2200      	movs	r2, #0
+  d6:	2300      	movs	r3, #0
+  d8:	2400      	movs	r4, #0
+  da:	2500      	movs	r5, #0
+  dc:	2600      	movs	r6, #0
+  de:	2700      	movs	r7, #0
+  e0:	46b8      	mov	r8, r7
+  e2:	46b9      	mov	r9, r7
+  e4:	46ba      	mov	sl, r7
+  e6:	46bb      	mov	fp, r7
+  e8:	46bc      	mov	ip, r7
+  ea:	46be      	mov	lr, r7
+  ec:	f000 f826 	bl	13c <main>
+
+000000f0 <NMI_Handler>:
+  f0:	e7fe      	b.n	f0 <NMI_Handler>
+
+000000f2 <HardFault_Handler>:
+  f2:	e7fe      	b.n	f2 <HardFault_Handler>
+
+000000f4 <SVC_Handler>:
+  f4:	e7fe      	b.n	f4 <SVC_Handler>
+
+000000f6 <PendSV_Handler>:
+  f6:	e7fe      	b.n	f6 <PendSV_Handler>
+
+000000f8 <SysTick_Handler>:
+  f8:	e7fe      	b.n	f8 <SysTick_Handler>
+
+000000fa <IRQ_Handler0>:
+  fa:	e7fe      	b.n	fa <IRQ_Handler0>
+
+000000fc <IRQ_Handler1>:
+  fc:	e7fe      	b.n	fc <IRQ_Handler1>
+
+000000fe <IRQ_Handler2>:
+  fe:	e7fe      	b.n	fe <IRQ_Handler2>
+
+00000100 <IRQ_Handler3>:
+ 100:	e7fe      	b.n	100 <IRQ_Handler3>
+
+00000102 <IRQ_Handler4>:
+ 102:	e7fe      	b.n	102 <IRQ_Handler4>
+
+00000104 <IRQ_Handler5>:
+ 104:	e7fe      	b.n	104 <IRQ_Handler5>
+
+00000106 <IRQ_Handler6>:
+ 106:	e7fe      	b.n	106 <IRQ_Handler6>
+
+00000108 <IRQ_Handler7>:
+ 108:	e7fe      	b.n	108 <IRQ_Handler7>
+
+0000010a <IRQ_Handler8>:
+ 10a:	e7fe      	b.n	10a <IRQ_Handler8>
+
+0000010c <IRQ_Handler9>:
+ 10c:	e7fe      	b.n	10c <IRQ_Handler9>
+
+0000010e <IRQ_Handler10>:
+ 10e:	e7fe      	b.n	10e <IRQ_Handler10>
+
+00000110 <IRQ_Handler11>:
+ 110:	e7fe      	b.n	110 <IRQ_Handler11>
+
+00000112 <IRQ_Handler12>:
+ 112:	e7fe      	b.n	112 <IRQ_Handler12>
+
+00000114 <IRQ_Handler13>:
+ 114:	e7fe      	b.n	114 <IRQ_Handler13>
+
+00000116 <IRQ_Handler14>:
+ 116:	e7fe      	b.n	116 <IRQ_Handler14>
+
+00000118 <IRQ_Handler15>:
+ 118:	e7fe      	b.n	118 <IRQ_Handler15>
+
+0000011a <IRQ_Handler16>:
+ 11a:	e7fe      	b.n	11a <IRQ_Handler16>
+
+0000011c <IRQ_Handler17>:
+ 11c:	e7fe      	b.n	11c <IRQ_Handler17>
+
+0000011e <IRQ_Handler18>:
+ 11e:	e7fe      	b.n	11e <IRQ_Handler18>
+
+00000120 <IRQ_Handler19>:
+ 120:	e7fe      	b.n	120 <IRQ_Handler19>
+
+00000122 <IRQ_Handler20>:
+ 122:	e7fe      	b.n	122 <IRQ_Handler20>
+
+00000124 <IRQ_Handler21>:
+ 124:	e7fe      	b.n	124 <IRQ_Handler21>
+
+00000126 <IRQ_Handler22>:
+ 126:	e7fe      	b.n	126 <IRQ_Handler22>
+
+00000128 <IRQ_Handler23>:
+ 128:	e7fe      	b.n	128 <IRQ_Handler23>
+
+0000012a <IRQ_Handler24>:
+ 12a:	e7fe      	b.n	12a <IRQ_Handler24>
+
+0000012c <IRQ_Handler25>:
+ 12c:	e7fe      	b.n	12c <IRQ_Handler25>
+
+0000012e <IRQ_Handler26>:
+ 12e:	e7fe      	b.n	12e <IRQ_Handler26>
+
+00000130 <IRQ_Handler27>:
+ 130:	e7fe      	b.n	130 <IRQ_Handler27>
+
+00000132 <IRQ_Handler28>:
+ 132:	e7fe      	b.n	132 <IRQ_Handler28>
+
+00000134 <IRQ_Handler29>:
+ 134:	e7fe      	b.n	134 <IRQ_Handler29>
+
+00000136 <IRQ_Handler30>:
+ 136:	e7fe      	b.n	136 <IRQ_Handler30>
+
+00000138 <IRQ_Handler31>:
+ 138:	e7fe      	b.n	138 <IRQ_Handler31>
+	...
+
+0000013c <main>:
+ 13c:	b590      	push	{r4, r7, lr}
+ 13e:	b08f      	sub	sp, #60	; 0x3c
+ 140:	af00      	add	r7, sp, #0
+ 142:	003b      	movs	r3, r7
+ 144:	4a37      	ldr	r2, [pc, #220]	; (224 <Stack_Size+0x24>)
+ 146:	ca13      	ldmia	r2!, {r0, r1, r4}
+ 148:	c313      	stmia	r3!, {r0, r1, r4}
+ 14a:	ca13      	ldmia	r2!, {r0, r1, r4}
+ 14c:	c313      	stmia	r3!, {r0, r1, r4}
+ 14e:	ca13      	ldmia	r2!, {r0, r1, r4}
+ 150:	c313      	stmia	r3!, {r0, r1, r4}
+ 152:	6812      	ldr	r2, [r2, #0]
+ 154:	601a      	str	r2, [r3, #0]
+ 156:	230a      	movs	r3, #10
+ 158:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 15a:	2300      	movs	r3, #0
+ 15c:	637b      	str	r3, [r7, #52]	; 0x34
+ 15e:	e02e      	b.n	1be <main+0x82>
+ 160:	2300      	movs	r3, #0
+ 162:	633b      	str	r3, [r7, #48]	; 0x30
+ 164:	e021      	b.n	1aa <main+0x6e>
+ 166:	003b      	movs	r3, r7
+ 168:	6b3a      	ldr	r2, [r7, #48]	; 0x30
+ 16a:	0092      	lsls	r2, r2, #2
+ 16c:	58d2      	ldr	r2, [r2, r3]
+ 16e:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 170:	1c59      	adds	r1, r3, #1
+ 172:	003b      	movs	r3, r7
+ 174:	0089      	lsls	r1, r1, #2
+ 176:	58cb      	ldr	r3, [r1, r3]
+ 178:	429a      	cmp	r2, r3
+ 17a:	dd13      	ble.n	1a4 <main+0x68>
+ 17c:	003b      	movs	r3, r7
+ 17e:	6b3a      	ldr	r2, [r7, #48]	; 0x30
+ 180:	0092      	lsls	r2, r2, #2
+ 182:	58d3      	ldr	r3, [r2, r3]
+ 184:	62bb      	str	r3, [r7, #40]	; 0x28
+ 186:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 188:	1c5a      	adds	r2, r3, #1
+ 18a:	003b      	movs	r3, r7
+ 18c:	0092      	lsls	r2, r2, #2
+ 18e:	58d1      	ldr	r1, [r2, r3]
+ 190:	003b      	movs	r3, r7
+ 192:	6b3a      	ldr	r2, [r7, #48]	; 0x30
+ 194:	0092      	lsls	r2, r2, #2
+ 196:	50d1      	str	r1, [r2, r3]
+ 198:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 19a:	1c5a      	adds	r2, r3, #1
+ 19c:	003b      	movs	r3, r7
+ 19e:	0092      	lsls	r2, r2, #2
+ 1a0:	6ab9      	ldr	r1, [r7, #40]	; 0x28
+ 1a2:	50d1      	str	r1, [r2, r3]
+ 1a4:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 1a6:	3301      	adds	r3, #1
+ 1a8:	633b      	str	r3, [r7, #48]	; 0x30
+ 1aa:	6afa      	ldr	r2, [r7, #44]	; 0x2c
+ 1ac:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 1ae:	1ad3      	subs	r3, r2, r3
+ 1b0:	1e5a      	subs	r2, r3, #1
+ 1b2:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 1b4:	429a      	cmp	r2, r3
+ 1b6:	dcd6      	bgt.n	166 <main+0x2a>
+ 1b8:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 1ba:	3301      	adds	r3, #1
+ 1bc:	637b      	str	r3, [r7, #52]	; 0x34
+ 1be:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 1c0:	1e5a      	subs	r2, r3, #1
+ 1c2:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 1c4:	429a      	cmp	r2, r3
+ 1c6:	dccb      	bgt.n	160 <main+0x24>
+ 1c8:	003b      	movs	r3, r7
+ 1ca:	681a      	ldr	r2, [r3, #0]
+ 1cc:	4b16      	ldr	r3, [pc, #88]	; (228 <Stack_Size+0x28>)
+ 1ce:	601a      	str	r2, [r3, #0]
+ 1d0:	003b      	movs	r3, r7
+ 1d2:	685a      	ldr	r2, [r3, #4]
+ 1d4:	4b15      	ldr	r3, [pc, #84]	; (22c <Stack_Size+0x2c>)
+ 1d6:	601a      	str	r2, [r3, #0]
+ 1d8:	003b      	movs	r3, r7
+ 1da:	689a      	ldr	r2, [r3, #8]
+ 1dc:	4b14      	ldr	r3, [pc, #80]	; (230 <Stack_Size+0x30>)
+ 1de:	601a      	str	r2, [r3, #0]
+ 1e0:	003b      	movs	r3, r7
+ 1e2:	68da      	ldr	r2, [r3, #12]
+ 1e4:	4b13      	ldr	r3, [pc, #76]	; (234 <Stack_Size+0x34>)
+ 1e6:	601a      	str	r2, [r3, #0]
+ 1e8:	003b      	movs	r3, r7
+ 1ea:	691a      	ldr	r2, [r3, #16]
+ 1ec:	4b12      	ldr	r3, [pc, #72]	; (238 <Stack_Size+0x38>)
+ 1ee:	601a      	str	r2, [r3, #0]
+ 1f0:	003b      	movs	r3, r7
+ 1f2:	695a      	ldr	r2, [r3, #20]
+ 1f4:	4b11      	ldr	r3, [pc, #68]	; (23c <Stack_Size+0x3c>)
+ 1f6:	601a      	str	r2, [r3, #0]
+ 1f8:	003b      	movs	r3, r7
+ 1fa:	699a      	ldr	r2, [r3, #24]
+ 1fc:	4b10      	ldr	r3, [pc, #64]	; (240 <Stack_Size+0x40>)
+ 1fe:	601a      	str	r2, [r3, #0]
+ 200:	003b      	movs	r3, r7
+ 202:	69da      	ldr	r2, [r3, #28]
+ 204:	4b0f      	ldr	r3, [pc, #60]	; (244 <Stack_Size+0x44>)
+ 206:	601a      	str	r2, [r3, #0]
+ 208:	003b      	movs	r3, r7
+ 20a:	6a1a      	ldr	r2, [r3, #32]
+ 20c:	4b0e      	ldr	r3, [pc, #56]	; (248 <Stack_Size+0x48>)
+ 20e:	601a      	str	r2, [r3, #0]
+ 210:	003b      	movs	r3, r7
+ 212:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 214:	4b0d      	ldr	r3, [pc, #52]	; (24c <Stack_Size+0x4c>)
+ 216:	601a      	str	r2, [r3, #0]
+ 218:	2300      	movs	r3, #0
+ 21a:	0018      	movs	r0, r3
+ 21c:	46bd      	mov	sp, r7
+ 21e:	b00f      	add	sp, #60	; 0x3c
+ 220:	bd90      	pop	{r4, r7, pc}
+ 222:	46c0      	nop			; (mov r8, r8)
+ 224:	00000250 	andeq	r0, r0, r0, asr r2
+ 228:	00000278 	andeq	r0, r0, r8, ror r2
+ 22c:	0000027c 	andeq	r0, r0, ip, ror r2
+ 230:	00000280 	andeq	r0, r0, r0, lsl #5
+ 234:	00000284 	andeq	r0, r0, r4, lsl #5
+ 238:	00000288 	andeq	r0, r0, r8, lsl #5
+ 23c:	0000028c 	andeq	r0, r0, ip, lsl #5
+ 240:	00000290 	muleq	r0, r0, r2
+ 244:	00000294 	muleq	r0, r4, r2
+ 248:	00000298 	muleq	r0, r8, r2
+ 24c:	0000029c 	muleq	r0, ip, r2
+ 250:	00000008 	andeq	r0, r0, r8
+ 254:	00000007 	andeq	r0, r0, r7
+ 258:	00000001 	andeq	r0, r0, r1
+ 25c:	00000002 	andeq	r0, r0, r2
+ 260:	00000006 	andeq	r0, r0, r6
+ 264:	00000009 	andeq	r0, r0, r9
+ 268:	00000000 	andeq	r0, r0, r0
+ 26c:	00000003 	andeq	r0, r0, r3
+ 270:	00000005 	andeq	r0, r0, r5
+ 274:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+
+Disassembly of section VERIFY0:
+
+00000278 <test0>:
+ 278:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY1:
+
+0000027c <test1>:
+ 27c:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY2:
+
+00000280 <test2>:
+ 280:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY3:
+
+00000284 <test3>:
+ 284:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY4:
+
+00000288 <test4>:
+ 288:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY5:
+
+0000028c <test5>:
+ 28c:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY6:
+
+00000290 <test6>:
+ 290:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY7:
+
+00000294 <test7>:
+ 294:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY8:
+
+00000298 <test8>:
+ 298:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section VERIFY9:
+
+0000029c <test9>:
+ 29c:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .heap:
+
+000002a0 <__HeapBase>:
+	...
+
+Disassembly of section .stack_dummy:
+
+000002a0 <.stack_dummy>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347 	bcc	10d0d24 <__StackTop+0x10c0d24>
+   4:	35312820 	ldrcc	r2, [r1, #-2080]!	; 0xfffff7e0
+   8:	332e363a 			; <UNDEFINED> instruction: 0x332e363a
+   c:	732b312e 			; <UNDEFINED> instruction: 0x732b312e
+  10:	35326e76 	ldrcc	r6, [r2, #-3702]!	; 0xfffff18a
+  14:	39333033 	ldmdbcc	r3!, {r0, r1, r4, r5, ip, sp}
+  18:	7562312d 	strbvc	r3, [r2, #-301]!	; 0xfffffed3
+  1c:	31646c69 	cmncc	r4, r9, ror #24
+  20:	2e362029 	cdpcs	0, 3, cr2, cr6, cr9, {1}
+  24:	20312e33 	eorscs	r2, r1, r3, lsr lr
+  28:	37313032 			; <UNDEFINED> instruction: 0x37313032
+  2c:	30323630 	eorscc	r3, r2, r0, lsr r6
+	...
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002e41 	andeq	r2, r0, r1, asr #28
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000024 	andeq	r0, r0, r4, lsr #32
+  10:	726f4305 	rsbvc	r4, pc, #335544320	; 0x14000000
+  14:	2d786574 	cfldr64cs	mvdx6, [r8, #-464]!	; 0xfffffe30
+  18:	0600304d 	streq	r3, [r0], -sp, asr #32
+  1c:	094d070c 	stmdbeq	sp, {r2, r3, r8, r9, sl}^
+  20:	14041201 	strne	r1, [r4], #-513	; 0xfffffdff
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	1a011803 	bne	4603c <__StackTop+0x3603c>
+  2c:	Address 0x000000000000002c is out of bounds.
+
