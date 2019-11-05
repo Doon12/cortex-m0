@@ -2069,7 +2069,7 @@ static void AddWithCarry(uint32_t* result, int* carry, int* overflow, uint32_t x
   else
 	*carry = 1;
 
-  if (signExtend32(*result, 32) == signed_sum)
+  if (signExtend32(*result, 31) == signed_sum)
 	*overflow = 0;
   else
 	*overflow = 1;

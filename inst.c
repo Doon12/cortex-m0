@@ -4,32 +4,30 @@
  *                                                       *
  *  C simulator for Cortex-M0                            *
  *                                                       *
- *  April, 2018                                          *
- *                                                       *
- *  Written by : Daesung Kim (dskim@ics.kaist.ac.kr)     *
  *                                                       *
  *********************************************************/
 
 #include "iss.h"
 
-/* Return the current instruction specified by PC */
+/* Return the instruction for EXE pipeline stage */
 uint16_t fetch(void)
 {
-  printf("ssssss2\n");
-  savedPC = PC;
-  cycle++;
-  printf("ssssss3\n");
-  return read_halfword(PC);
+  return read_halfword(EXE_PC);
 }
 
-/* Update PC. If branch has occured, do not change PC,
+/* Update PC. If branch has occured, PC + 4 for EXE pipeline stage,
    otherwise increment by 2. */
 void updatePC(void)
 {
-  if (!branch)
+  if (!branch){
     PC = PC + 2;
-
-  branch = 0;
+    EXE_PC = PC-4;
+    }
+  else{
+    branch = 0;
+    EXE_PC = PC;
+    PC = PC + 4;
+  }
 }
 
 /* Extract a number from DATA at the bit positions START to END.

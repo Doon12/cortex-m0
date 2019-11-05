@@ -4,10 +4,6 @@
  *                                                       *
  *  C simulator for Cortex-M0                            *
  *                                                       *
- *  April, 2018                                          *
- *                                                       *
- *  Written by : Daesung Kim (dskim@ics.kaist.ac.kr)     *
- *  Updated by : Seongjin Lee (sjlee@ics.kaist.ac.kr)    *
  *                                                       *
  *********************************************************/
 
@@ -30,20 +26,19 @@ struct APSR {
   int V;
 } APSR;
 
+
 #define SP R[13]
 #define LR R[14]
 #define PC R[15]
 
 #define MEM_SIZE  0x4000000
-
 uint8_t *mem;
 
-int cycle;
 
 // BRANCH should be set to 1 whenever branch occurs
 int branch;
-
-uint32_t savedPC;
+//instruction address for EXE pipeline stage(PC-4)
+uint32_t EXE_PC;
 
 uint16_t fetch(void);
 void process(uint16_t inst);

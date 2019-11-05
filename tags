@@ -7,30 +7,47 @@
 APSR	iss.h	/^struct APSR {$/;"	s
 APSR	iss.h	/^} APSR;$/;"	v	typeref:struct:APSR
 AS	test/Makefile	/^AS=$(CROSS_COMPILE)as$/;"	m
+ASR_C	thumb.c	/^static void ASR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+AddWithCarry	thumb.c	/^static void AddWithCarry(uint32_t* result, int* carry, int* overflow, uint32_t x, uint32_t y, int cin, int N)$/;"	f	file:
+BitCount	thumb.c	/^static int BitCount(uint32_t x)$/;"	f	file:
 C	iss.h	/^  int C;$/;"	m	struct:APSR
 CC	test/Makefile	/^CC=$(CROSS_COMPILE)gcc$/;"	m
 CFLAGS	test/Makefile	/^CFLAGS = \\$/;"	m
 CROSS_COMPILE	test/Makefile	/^CROSS_COMPILE=arm-none-eabi-$/;"	m
-INST	iss.h	59;"	d
-INST32	iss.h	62;"	d
-INST32_	iss.h	63;"	d
-INST_	iss.h	60;"	d
-ISS_H	iss.h	15;"	d
+EXE_PC	iss.h	/^uint32_t EXE_PC;$/;"	v
+INST	iss.h	54;"	d
+INST32	iss.h	57;"	d
+INST32_	iss.h	58;"	d
+INST_	iss.h	55;"	d
+ISS_H	iss.h	11;"	d
 LDFLAGS	test/Makefile	/^LDFLAGS = -Wl,--gc-sections -nostartfiles$/;"	m
 LDSCRIPT	test/Makefile	/^LDSCRIPT = linkerscript.ld$/;"	m
-LR	iss.h	34;"	d
-MEM_SIZE	iss.h	37;"	d
-MSB	iss.h	65;"	d
+LR	iss.h	31;"	d
+LSL_C	thumb.c	/^static void LSL_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+LSR_C	thumb.c	/^static void LSR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+LowestSetBit	thumb.c	/^static int LowestSetBit(uint32_t x)$/;"	f	file:
+MEM_SIZE	iss.h	34;"	d
+MSB	iss.h	60;"	d
 N	iss.h	/^  int N;$/;"	m	struct:APSR
 OBJCOPY	test/Makefile	/^OBJCOPY=$(CROSS_COMPILE)objcopy$/;"	m
 OBJDUMP	test/Makefile	/^OBJDUMP=$(CROSS_COMPILE)objdump$/;"	m
 OBJS	test/Makefile	/^OBJS = bubble_sort.o$/;"	m
-PC	iss.h	35;"	d
+PC	iss.h	32;"	d
 R	iss.h	/^uint32_t R[16];$/;"	v
+ROR_C	thumb.c	/^static void ROR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+RRX_C	thumb.c	/^static void RRX_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
 Reset_Handler	test/startup.s	/^Reset_Handler:$/;"	l
-SP	iss.h	33;"	d
+SP	iss.h	30;"	d
 SRCS	test/Makefile	/^SRCS = bubble_sort.c$/;"	m
+SRType	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	g	file:
+SRType_ASR	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
+SRType_LSL	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
+SRType_LSR	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
+SRType_ROR	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
+SRType_RRX	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
 STARTUP	test/Makefile	/^STARTUP = startup.s$/;"	m
+Shift	thumb.c	/^static void Shift(uint32_t* result, uint32_t value , int value_bit, enum SRType srtype, int amount, int carry_in)$/;"	f	file:
+Shift_C	thumb.c	/^static void Shift_C(uint32_t* result, int* carry_out, uint32_t value , int value_bit, enum SRType srtype, int amount, int carry_in)$/;"	f	file:
 TARGET	test/Makefile	/^TARGET=bubble_sort$/;"	m
 V	iss.h	/^  int V;$/;"	m	struct:APSR
 Z	iss.h	/^  int Z;$/;"	m	struct:APSR
@@ -39,10 +56,29 @@ __HeapLimit	test/startup.s	/^__HeapLimit:$/;"	l
 __StackLimit	test/startup.s	/^__StackLimit:$/;"	l
 __StackTop	test/startup.s	/^__StackTop:$/;"	l
 __isr_vector	test/startup.s	/^__isr_vector:$/;"	l
+adc_r	thumb.c	/^void adc_r(uint16_t inst)$/;"	f
+add_3i	thumb.c	/^void add_3i(uint16_t inst)$/;"	f
+add_8i	thumb.c	/^void add_8i(uint16_t inst)$/;"	f
+add_r1	thumb.c	/^void add_r1(uint16_t inst)$/;"	f
+add_r2	thumb.c	/^void add_r2(uint16_t inst)$/;"	f
+add_sp_i1	thumb.c	/^void add_sp_i1(uint16_t inst)$/;"	f
+add_sp_i2	thumb.c	/^void add_sp_i2(uint16_t inst)$/;"	f
+adr	thumb.c	/^void adr(uint16_t inst)$/;"	f
+and_r	thumb.c	/^void and_r(uint16_t inst)$/;"	f
+asr_i	thumb.c	/^void asr_i(uint16_t inst)$/;"	f
+asr_r	thumb.c	/^void asr_r(uint16_t inst)$/;"	f
+b_conditional	thumb.c	/^void b_conditional(uint16_t inst)$/;"	f
 b_unconditional	thumb.c	/^void b_unconditional(uint16_t inst)$/;"	f
+bic_r	thumb.c	/^void bic_r(uint16_t inst)$/;"	f
 bl	thumb.c	/^void bl(uint32_t inst)$/;"	f
+blx	thumb.c	/^void blx(uint16_t inst)$/;"	f
 branch	iss.h	/^int branch;$/;"	v
-cycle	iss.h	/^int cycle;$/;"	v
+bx	thumb.c	/^void bx(uint16_t inst)$/;"	f
+cmn_r	thumb.c	/^void cmn_r(uint16_t inst)$/;"	f
+cmp_i	thumb.c	/^void cmp_i(uint16_t inst)$/;"	f
+cmp_r1	thumb.c	/^void cmp_r1(uint16_t inst)$/;"	f
+cmp_r2	thumb.c	/^void cmp_r2(uint16_t inst)$/;"	f
+eor_r	thumb.c	/^void eor_r(uint16_t inst)$/;"	f
 extract16	inst.c	/^uint16_t extract16(uint16_t data, int end, int start)$/;"	f
 extract16_	inst.c	/^uint16_t extract16_(uint16_t data, int pos)$/;"	f
 extract32	inst.c	/^uint32_t extract32(uint32_t data, int end, int start)$/;"	f
@@ -50,17 +86,58 @@ extract32_	inst.c	/^uint32_t extract32_(uint32_t data, int pos)$/;"	f
 fetch	inst.c	/^uint16_t fetch(void)$/;"	f
 init_mem	core.c	/^void init_mem(char *mem_name)$/;"	f
 init_register	core.c	/^void init_register(void)$/;"	f
+ldm	thumb.c	/^void ldm(uint16_t inst)$/;"	f
+ldr_5i	thumb.c	/^void ldr_5i(uint16_t inst)$/;"	f
+ldr_8i	thumb.c	/^void ldr_8i(uint16_t inst)$/;"	f
+ldr_pc_rel	thumb.c	/^void ldr_pc_rel(uint16_t inst)$/;"	f
+ldr_r	thumb.c	/^void ldr_r(uint16_t inst)$/;"	f
+ldrb_i	thumb.c	/^void ldrb_i(uint16_t inst)$/;"	f
+ldrb_r	thumb.c	/^void ldrb_r(uint16_t inst)$/;"	f
+ldrh_i	thumb.c	/^void ldrh_i(uint16_t inst)$/;"	f
+ldrh_r	thumb.c	/^void ldrh_r(uint16_t inst)$/;"	f
+ldrsb_r	thumb.c	/^void ldrsb_r(uint16_t inst)$/;"	f
+ldrsh_r	thumb.c	/^void ldrsh_r(uint16_t inst)$/;"	f
+lsl_i	thumb.c	/^void lsl_i(uint16_t inst)$/;"	f
+lsl_r	thumb.c	/^void lsl_r(uint16_t inst)$/;"	f
+lsr_i	thumb.c	/^void lsr_i(uint16_t inst)$/;"	f
+lsr_r	thumb.c	/^void lsr_r(uint16_t inst)$/;"	f
 main	core.c	/^int main(int argc, char *argv[])$/;"	f
 main	test/B2H_CONVERTER.c	/^int main(int argc, char *argv[]){$/;"	f
 main	test/bubble_sort.c	/^int main(void)$/;"	f
 mem	iss.h	/^uint8_t *mem;$/;"	v
+mov_i	thumb.c	/^void mov_i(uint16_t inst)$/;"	f
+mov_r1	thumb.c	/^void mov_r1(uint16_t inst)$/;"	f
+mul	thumb.c	/^void mul(uint16_t inst)$/;"	f
+mvn_r	thumb.c	/^void mvn_r(uint16_t inst)$/;"	f
+orr_r	thumb.c	/^void orr_r(uint16_t inst)$/;"	f
+pop	thumb.c	/^void pop(uint16_t inst)$/;"	f
 process	thumb.c	/^void process(uint16_t inst)$/;"	f
+push	thumb.c	/^void push(uint16_t inst)$/;"	f
 read_byte	memory.c	/^uint32_t read_byte(uint32_t addr)$/;"	f
 read_halfword	memory.c	/^uint32_t read_halfword(uint32_t addr)$/;"	f
 read_word	memory.c	/^uint32_t read_word(uint32_t addr)$/;"	f
-savedPC	iss.h	/^uint32_t savedPC;$/;"	v
-signExtend32	iss.h	69;"	d
+rev	thumb.c	/^void rev(uint16_t inst)$/;"	f
+rev16	thumb.c	/^void rev16(uint16_t inst)$/;"	f
+revsh	thumb.c	/^void revsh(uint16_t inst)$/;"	f
+ror_r	thumb.c	/^void ror_r(uint16_t inst)$/;"	f
+rsb_i	thumb.c	/^void rsb_i(uint16_t inst)$/;"	f
+sbc_r	thumb.c	/^void sbc_r(uint16_t inst)$/;"	f
+signExtend32	iss.h	64;"	d
 sign_extend	inst.c	/^uint32_t sign_extend(uint32_t a, int length)$/;"	f
+stm	thumb.c	/^void stm(uint16_t inst)$/;"	f
+str_5i	thumb.c	/^void str_5i(uint16_t inst)$/;"	f
+str_8i	thumb.c	/^void str_8i(uint16_t inst)$/;"	f
+str_r	thumb.c	/^void str_r(uint16_t inst)$/;"	f
+strb_i	thumb.c	/^void strb_i(uint16_t inst)$/;"	f
+strb_r	thumb.c	/^void strb_r(uint16_t inst)$/;"	f
+strh_i	thumb.c	/^void strh_i(uint16_t inst)$/;"	f
+strh_r	thumb.c	/^void strh_r(uint16_t inst)$/;"	f
+sub_3i	thumb.c	/^void sub_3i(uint16_t inst)$/;"	f
+sub_8i	thumb.c	/^void sub_8i(uint16_t inst)$/;"	f
+sub_r	thumb.c	/^void sub_r(uint16_t inst)$/;"	f
+sub_sp_i	thumb.c	/^void sub_sp_i(uint16_t inst)$/;"	f
+sxtb	thumb.c	/^void sxtb(uint16_t inst)$/;"	f
+sxth	thumb.c	/^void sxth(uint16_t inst)$/;"	f
 test0	test/bubble_sort.c	/^int test0 __attribute__ ((section ("VERIFY0")));$/;"	v
 test1	test/bubble_sort.c	/^int test1 __attribute__ ((section ("VERIFY1")));$/;"	v
 test2	test/bubble_sort.c	/^int test2 __attribute__ ((section ("VERIFY2")));$/;"	v
@@ -72,9 +149,12 @@ test7	test/bubble_sort.c	/^int test7 __attribute__ ((section ("VERIFY7")));$/;"	
 test8	test/bubble_sort.c	/^int test8 __attribute__ ((section ("VERIFY8")));$/;"	v
 test9	test/bubble_sort.c	/^int test9 __attribute__ ((section ("VERIFY9")));$/;"	v
 to_little	test/B2H_CONVERTER.c	/^int to_little(int bits32){$/;"	f
+tst_r	thumb.c	/^void tst_r(uint16_t inst)$/;"	f
 updatePC	inst.c	/^void updatePC(void)$/;"	f
+uxtb	thumb.c	/^void uxtb(uint16_t inst)$/;"	f
+uxth	thumb.c	/^void uxth(uint16_t inst)$/;"	f
 view_reg	core.c	/^void view_reg(uint16_t inst)$/;"	f
 write_byte	memory.c	/^void write_byte(uint32_t addr, uint32_t value)$/;"	f
 write_halfword	memory.c	/^void write_halfword(uint32_t addr, uint32_t value)$/;"	f
 write_word	memory.c	/^void write_word(uint32_t addr, uint32_t value)$/;"	f
-zeroExtend32	iss.h	68;"	d
+zeroExtend32	iss.h	63;"	d

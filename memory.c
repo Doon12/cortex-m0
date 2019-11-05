@@ -14,7 +14,7 @@
 
 uint32_t read_word(uint32_t addr)
 {
-  uint32_t data;
+	uint32_t data;
 
   data = (uint32_t) mem[addr];
   data += (uint32_t) mem[addr + 1] << 8;
@@ -26,7 +26,7 @@ uint32_t read_word(uint32_t addr)
 
 uint32_t read_halfword(uint32_t addr)
 {
-  uint32_t data;
+	uint32_t data;
 
   data = (uint32_t) mem[addr];
   data += (uint32_t) mem[addr + 1] << 8;
