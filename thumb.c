@@ -26,6 +26,8 @@ static void ASR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bi
 static void ROR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount);
 static void RRX_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount);
 static void AddWithCarry(uint32_t* result, int* carry, int* overflow, uint32_t x, uint32_t y, int cin, int N);
+static uint32_t UInt(uint32_t x_in);
+static int32_t SInt(uint32_t x_in);
 
 /* newly implemented functions */
 void lsl_i(uint16_t inst);
@@ -128,50 +130,64 @@ void process(uint16_t inst)
 	 SUB8i
    */
   if (INST(15, 14) == 0x0) {
+
+	  printf("\nGROUP1\n");
+
 	  /* LSLi */
 	  if (INST(13, 11) == 0x0) {
+		  printf("LSL_I\n");
 		  lsl_i(inst);
 	  }
 	  /* LSRi */
 	  else if (INST(13, 11) == 0x1) {
+		  printf("LSR_I\n");
 		  lsr_i(inst);
 	  }
 	  /* ASRi */
 	  else if (INST(13, 11) == 0x2) {
+		  printf("ASRi \n");
 		  asr_i(inst);
 	  }
 	  else if (INST(13, 11) == 0x3) {
 		  /* ADDr1 */
 		  if (INST(10, 9) == 0x0) {
+			  printf("ADDr1\n");
 			  add_r1(inst);
 		  }
 		  /* SUBr */
 		  else if (INST(10,9) == 0x1) {
+			  printf("SUBr\n");
 			  sub_r(inst);
 		  }
 		  /* ADD3i */
 		  else if (INST(10,9) == 0x2) {
+			  printf("ADD3i \n");
 			  add_3i(inst);
 		  }
 		  /* SUB3i */
 		  else if (INST(10,9) == 0x3) {
+			  printf("SUB3i \n");
 			  sub_3i(inst);
 		  }
 	  }
 	  /* MOVi */
 	  else if (INST(13, 11) == 0x4) {
+		  printf("MOVi \n");
 		  mov_i(inst);
 	  }
 	  /* CMPi */
 	  else if (INST(13, 11) == 0x5) {
+		  printf("CMPi \n");
 		  cmp_i(inst);
 	  }
 	  /* ADD8i */
 	  else if (INST(13, 11) == 0x6) {
+		  printf("ADD8i \n");
 		  add_8i(inst);
 	  }
 	  /* SUB8i */
 	  else if (INST(13, 11) == 0x7) {
+		  printf("SUB8i \n");
 		  sub_8i(inst);
 	  }
   }
@@ -195,68 +211,88 @@ void process(uint16_t inst)
 	 MVNr
    */
   else if (INST(15, 10) == 0x10) {
+
+	  printf("\nGROUP2\n");
+
+
 	  /* ANDr */
 	  if (INST(9, 6) == 0x0) {
+		  printf("ANDr \n");
 		  and_r(inst);
 	  }
 	  /* EORr */
 	  else if (INST(9, 6) == 0x1) {
+		  printf("EORr \n");
 		  eor_r(inst);
 	  }
 	  /* LSLr */
 	  else if (INST(9, 6) == 0x2) {
+		  printf("LSLr \n");
 		  lsl_r(inst);
 	  }
 	  /* LSRr */
 	  else if (INST(9, 6) == 0x3) {
+		  printf("LSRr \n");
 		  lsr_r(inst);
 	  }
 	  /* ASRr */
 	  else if (INST(9, 6) == 0x4) {
+		  printf("ASRr \n");
 		  asr_r(inst);
 	  }
 	  /* ADCr */
 	  else if (INST(9, 6) == 0x5) {
+		  printf("ADCr \n");
 		  adc_r(inst);
 	  }
 	  /* SBCr */
 	  else if (INST(9, 6) == 0x6) {
+		  printf("SBCr \n");
 		  sbc_r(inst);
 	  }
 	  /* RORr */
 	  else if (INST(9, 6) == 0x7) {
+		  printf("RORr \n");
 		  ror_r(inst);
 	  }
 	  /* TSTr */
 	  else if (INST(9, 6) == 0x8) {
+		  printf("TSTr \n");
 		  tst_r(inst);
 	  }
 	  /* RSBi */
 	  else if (INST(9, 6) == 0x9) {
+		  printf("RSBi \n");
 		  rsb_i(inst);
 	  }
 	  /* CMPr1 */
 	  else if (INST(9, 6) == 0xA) {
+		  printf("CMPr1 \n");
 		  cmp_r1(inst);
 	  }
 	  /* CMNr */
 	  else if (INST(9, 6) == 0xB) {
+		  printf("CMNr \n");
 		  cmn_r(inst);
 	  }
 	  /* ORRr */
 	  else if (INST(9, 6) == 0xC) {
+		  printf("ORRr \n");
 		  orr_r(inst);
 	  }
 	  /* MUL */
 	  else if (INST(9, 6) == 0xD) {
+		  printf("MUL \n");
 		  mul(inst);
 	  }
 	  /* BICr */
 	  else if (INST(9, 6) == 0xE) {
+		  printf("BICr \n");
 		  bic_r(inst);
 	  }
 	  /* MVNr */
 	  else if (INST(9, 6) == 0xF) {
+		  printf("MVNr \n");
 		  mvn_r(inst);
 	  }
   }
@@ -269,25 +305,36 @@ void process(uint16_t inst)
 	 BLX
    */
   else if (INST(15, 10) == 0x11) {
+
+	  printf("\nGROUP3\n");
+
+
+
+
 	  /* ADDr2 */
 	  if (INST(9, 8) == 0x0) {
+		  printf("ADDr2 \n");
 		  add_r2(inst);
 	  }
 	  /* CMPr2 */
 	  else if (INST(9, 8) == 0x1) {
+		  printf("CMPr2 \n");
 		  cmp_r2(inst);
 	  }
 	  /* MOVr1 */
 	  else if (INST(9, 8) == 0x2) {
+		  printf("MOVr1 \n");
 		  mov_r1(inst);
 	  }
 	  else if (INST(9, 8) == 0x3) {
 		  /* BX */
 		  if (INST_(7) == 0x0) {
+			  printf("BX \n");
 			  bx(inst);
 		  }
 		  /* BLX */
 		  else if (INST_(7) == 0x1) {
+			  printf("BLX \n");
 			  blx(inst);
 		  }
 	  }
@@ -297,7 +344,14 @@ void process(uint16_t inst)
 	 LDR(PC-relative)
    */
   else if (INST(15, 11) == 0x09) {
+
+	  printf("\nGROUP4\n");
+
+
+
+
 	  ldr_pc_rel(inst);
+
   }
 
   /*
@@ -311,36 +365,50 @@ void process(uint16_t inst)
 	 LDRSHr
    */
   else if (INST(15, 12) == 0x05) {
+
+
+	  printf("\nGROUP5\n");
+
+
+
 	  /* STRr */
 	  if (INST(11, 9) == 0x0) {
+		  printf("STRr \n");
 		  str_r(inst);
 	  }
 	  /* STRHr */
 	  else if (INST(11, 9) == 0x1) {
+		  printf("STRHr \n");
 		  strh_r(inst);
 	  }
 	  /* STRBr */
 	  else if (INST(11, 9) == 0x2) {
+		  printf("STRBr \n");
 		  strb_r(inst);
 	  }
 	  /* LDRSBr */
 	  else if (INST(11, 9) == 0x3) {
+		  printf("LDRSBr \n");
 		  ldrsb_r(inst);
 	  }
 	  /* LDRr */
 	  else if (INST(11, 9) == 0x4) {
+		  printf("LDRr \n");
 		  ldr_r(inst);
 	  }
 	  /* LDRHr */
 	  else if (INST(11, 9) == 0x5) {
+		  printf("LDRHr \n");
 		  ldrh_r(inst);
 	  }
 	  /* LDRBr */
 	  else if (INST(11, 9) == 0x6) {
+		  printf("LDRBr \n");
 		  ldrb_r(inst);
 	  }
 	  /* LDRSHr */
 	  else if (INST(11, 9) == 0x7) {
+		  printf("LDRSHr \n");
 		  ldrsh_r(inst);
 	  }
   }
@@ -352,20 +420,30 @@ void process(uint16_t inst)
 	 LDRBi
    */
   else if (INST(15, 13) == 0x03) {
+
+	  printf("\nGROUP6\n");
+
+
+
+
 	  /* STR5i */
 	  if (INST(12, 11) == 0x0) {
+		  printf("STR5i \n");
 		  str_5i(inst);
 	  }
 	  /* LDR5i */
 	  else if (INST(12, 11) == 0x1) {
+		  printf("LDR5i \n");
 		  ldr_5i(inst);
 	  }
 	  /* STRBi */
 	  else if (INST(12, 11) == 0x2) {
+		  printf("STRBi \n");
 		  strb_i(inst);
 	  }
 	  /* LDRBi */
 	  else if (INST(12, 11) == 0x3) {
+		  printf("LDRBi \n");
 		  ldrb_i(inst);
 	  }
   }
@@ -377,20 +455,30 @@ void process(uint16_t inst)
 	 LDR8i
    */
   else if (INST(15, 13) == 0x04) {
+
+	  printf("\nGROUP7\n");
+
+
+
+
 	  /* STRHi */
 	  if (INST(12, 11) == 0x0) {
+		  printf("STRHi \n");
 		  strh_i(inst);
 	  }
 	  /* LDRHi */
 	  else if (INST(12, 11) == 0x1) {
+		  printf("LDRHi \n");
 		  ldrh_i(inst);
 	  }
 	  /* STR8i */
 	  else if (INST(12, 11) == 0x2) {
+		  printf("STR8i \n");
 		  str_8i(inst);
 	  }
 	  /* LDR8i */
 	  else if (INST(12, 11) == 0x3) {
+		  printf("LDR8i \n");
 		  ldr_8i(inst);
 	  }
   }
@@ -399,6 +487,11 @@ void process(uint16_t inst)
 	 ADR
    */
   else if (INST(15, 11) == 0x14) {
+
+	  printf("\nGROUP8\n");
+
+
+
 	  adr(inst);
   }
 
@@ -406,6 +499,11 @@ void process(uint16_t inst)
 	 ADDSPi1
    */
   else if (INST(15, 11) == 0x15) {
+
+	  printf("\nGROUP9\n");
+
+
+
 	  add_sp_i1(inst);
   }
 
@@ -423,56 +521,72 @@ void process(uint16_t inst)
 	 POP
    */
   else if (INST(15, 12) == 0x0B) {
+
+	  printf("\nGROUP10\n");
+
+
+
 	  if (INST(11, 8) == 0x0) {
 		  /* ADDSPi2 */
 		  if (INST_(7) == 0x0) {
+			  printf("ADDSPi2 \n");
 			  add_sp_i2(inst);
 		  }
 		  /* SUBSPi */
 		  else if (INST_(7) == 0x1) {
+			  printf("SUBSPi \n");
 			  sub_sp_i(inst);
 		  }
 	  }
 	  else if (INST(11, 8) == 0x2) {
 		  /* SXTH */
 		  if (INST(7, 6) == 0x0) {
+			  printf("SXTH \n");
 			  sxth(inst);
 		  }
 		  /* SXTB */
 		  else if (INST(7, 6) == 0x1) {
+			  printf("SXTB \n");
 			  sxtb(inst);
 		  }
 		  /* UXTH */
 		  else if (INST(7, 6) == 0x2) {
+			  printf("UXTH \n");
 			  uxth(inst);
 		  }
 		  /* UXTB */
 		  else if (INST(7, 6) == 0x3) {
+			  printf("UXTB \n");
 			  uxtb(inst);
 		  }
 	  }
 	  /* PUSH */
 	  else if (INST(11, 9) == 0x2) {
+		  printf("PUSH \n");
 		  push(inst);
 	  }
 	  else if (INST(11, 9) == 0x5) {
 		  if (INST_(8) == 0x0) {
 			  /* REV */
 			  if (INST(7, 6) == 0x0) {
+				  printf("REV \n");
 				  rev(inst);
 			  }
 			  /* REV16 */
 			  else if (INST(7, 6) == 0x1) {
+				  printf("REV16 \n");
 				  rev16(inst);
 			  }
 			  /* REVSH */
 			  else if (INST(7, 6) == 0x3) {
+				  printf("REVSH \n");
 				  revsh(inst);
 			  }
 		  }
 	  }
 	  /* POP */
 	  else if (INST(11, 9) == 0x6) {
+		  printf("POP \n");
 		  pop(inst);
 	  }
   }
@@ -481,6 +595,11 @@ void process(uint16_t inst)
 	 STM
    */
   else if (INST(15, 11) == 0x18) {
+
+	  printf("\nGROUP12\n");
+
+
+
 	  stm(inst);
   }
 
@@ -488,6 +607,11 @@ void process(uint16_t inst)
 	 LDM
    */
   else if (INST(15, 11) == 0x19) {
+
+	  printf("\nGROUP13\n");
+
+
+
 	  ldm(inst);
   }
 
@@ -495,19 +619,44 @@ void process(uint16_t inst)
 	 B (conditional)
    */
   else if (INST(15, 12) == 0x0D) {
+
+	  printf("\nGROUP14\n");
+
+
+
 	  b_conditional(inst);
   }
 
   /* Already Implemented. */
   else if (INST(15, 11) == 0x1C) {
+
+	  printf("\nGROUP15\n");
+
+
+
 	  b_unconditional(inst);
   }
   else if (INST(15, 11) == 0x1E) {
-	  inst2 = read_halfword(PC + 2);
+
+	  printf("\nGROUP16\n");
+
+
+
+	  inst2 = read_halfword(EXE_PC + 2);
 	  inst32 = ((uint32_t) inst << 16) | ((uint32_t) inst2);
+
+	  printf("%x\n",inst32);
+
 	  if (extract16_(inst2, 14) && extract16_(inst2, 12))
-		bl(inst32);
+		{
+		  printf("exec bl\n");
+		  bl(inst32);
+		}
   }
+  else
+	{
+	  printf("ERROR : no such case\n");
+	}
 }
 
 /* add additional functions for other instructions */
@@ -524,15 +673,22 @@ void lsl_i(uint16_t inst)
   uint32_t Rm = R[m];
 
   uint32_t result;
-  uint32_t carry;
+  int carry;
 
   if (imm5 == 0x0)
 	{
 	  /* SEE MOV (register) */
 	  result = Rm;
 	  R[d] = (uint32_t)result;
+
+	  printf("RD : %x\n", R[d]);
+
 	  APSR.N = extract32_(R[d], 31);
+
+
+	  printf("N : %x\n", APSR.N);
 	  APSR.Z = (R[d] == 0);
+	  // C and V unchanged
 	}
   else 
 	{
@@ -562,9 +718,9 @@ void lsr_i(uint16_t inst)
   int carry;
   /* (result, carry) = Shift_C(R[m], SRType_LSR, shift_n, APSR.C */
   Shift_C(&result, &carry, R[m], 32, SRType_LSR, shift_n, APSR.C);
-  
+
   R[d] = result;
-  
+
   /* set flags */
   APSR.N = extract32_(R[d], 31);
   APSR.Z = (R[d] == 0);
@@ -604,7 +760,7 @@ void add_r1(uint16_t inst)
   enum SRType shift_t = SRType_LSL;
   int shift_n = 0;
   /* shifted = Shift(R[m], shift_t, shift_n, APSR.C) */
-  
+
   Shift(&shifted, R[m] , 32, shift_t, shift_n, APSR.C);
 
   uint32_t result;
@@ -643,6 +799,9 @@ void sub_r(uint16_t inst)
   int carry, overflow;
   /* (result, carry, overflow) = AddWithCarry(R[n], NOT(shifted), '1', 32) */
   AddWithCarry(&result, &carry, &overflow, R[n], ~shifted, 1, 32);
+
+  /* store result */
+  R[d] = result;
 
   /* set flags */
   APSR.N = extract32_(result, 31);
@@ -686,6 +845,9 @@ void sub_3i(uint16_t inst)
   /* (result, carry, overflow) = AddWithCarry(R[n], NOT(imm32), '1', 32) */
   AddWithCarry(&result, &carry, &overflow, R[n], ~imm32, 1, 32);
 
+  /* store value */
+  R[d] = result;
+
   /* set flags */
   APSR.N = extract32_(result, 31);
   APSR.Z = (result == 0);
@@ -700,7 +862,7 @@ void mov_i(uint16_t inst)
   uint32_t imm8 = INST(7, 0);
   uint32_t imm32 = zeroExtend32(imm8); /* zero extend */
   int carry = APSR.C;
-  
+
   uint32_t result = imm32;
   R[d] = result;
 
@@ -738,10 +900,13 @@ void add_8i(uint16_t inst)
   uint32_t imm8 = INST(7, 0);
   uint32_t imm32 = zeroExtend32(imm8);
 
- /* result, carry, overflow = AddWithCarry(R[n], imm32, '0')*/ 
+  /* result, carry, overflow = AddWithCarry(R[n], imm32, '0')*/ 
   uint32_t result;
   int carry, overflow;
   AddWithCarry(&result, &carry, &overflow, R[n], imm32, 0, 32);
+
+  /* store result */
+  R[d] = result; 
 
   /* set flags */
   APSR.N = extract32_(result, 31);
@@ -762,6 +927,9 @@ void sub_8i(uint16_t inst)
   int carry, overflow;
   AddWithCarry(&result, &carry, &overflow, R[n], ~imm32, 1, 32);
 
+  /* store result */
+  R[d] = result;
+
   /* set flags */
   APSR.N = extract32_(result, 31);
   APSR.Z = (result == 0);
@@ -781,9 +949,9 @@ void and_r(uint16_t inst)
 
   int32_t shifted, carry, result;
 
-  /* result, carry = Shift_C(R[m], SRType_LSL, shift_n, APSR.C */
-  Shift_C(&result, &carry, R[m], 32, SRType_LSL, shifted_n, APSR.C);
- 
+  /* shifted, carry = Shift_C(R[m], SRType_LSL, shift_n, APSR.C */
+  Shift_C(&shifted, &carry, R[m], 32, SRType_LSL, shifted_n, APSR.C);
+
   /* and operation */
   result = R[n] & shifted;
   /* store value to R[d] */
@@ -809,7 +977,7 @@ void eor_r(uint16_t inst)
 
   /* (shifted, carry) = Shift_C(R[m], shift_t, shift_n, APSR_C) */
   Shift_C(&result, &carry, R[m], 32, SRType_LSL, shift_n, APSR.C);
-  
+
   /* eor operation */
   result = R[n] ^ shifted;
   /* store value to R[d] */
@@ -835,7 +1003,7 @@ void lsl_r(uint16_t inst)
   int carry;
   /* result, carry = Shift_C(R[m], SRType_LSL, shift_n, APSR.C */
   Shift_C(&result, &carry, R[m], 32, SRType_LSL, shift_n, APSR.C);
-  
+
   /* store values */
   R[d] = (int32_t) result;
 
@@ -886,7 +1054,7 @@ void asr_r(uint16_t inst)
 
   /* store value */
   R[d] = result;
-  
+
   /* set flags */
   APSR.N = extract32_(result, 31);
   APSR.Z = (result == 0);
@@ -953,7 +1121,7 @@ void ror_r(uint16_t inst)
   uint32_t n = d;
   uint32_t m = INST(5, 3);
   uint32_t shift_n = extract32(R[m], 7, 0);
-  
+
   uint32_t result;
   int carry;
   Shift_C(&result, &carry, R[n], 32, SRType_ROR, shift_n, APSR.C);
@@ -1152,9 +1320,25 @@ void add_r2(uint16_t inst)
   uint32_t d = INST(2, 0);
   uint32_t n = d;
 
-  if ( (((DN<<4) | R[n]) == 0xD) || (R[m] == 0xD))
+  if ( (((DN<<3) | n) == 0xD) || (m == 0xD))
 	{
 	  /* SEE ADD (SP plus register) */
+	  uint32_t d = 13;
+	  enum SRType shift_t = SRType_LSL;
+	  uint32_t shift_n = 0;
+
+	  uint32_t shifted;
+	  Shift(&shifted, R[m] , 32, shift_t, shift_n, APSR.C);
+
+	  uint32_t result;
+	  int carry, overflow;
+	  /* (result, carry, overflow) = AddWithCarry(SP, shifted, '0', 32) */
+	  AddWithCarry(&result, &carry, &overflow, SP, shifted, 0, 32);
+
+	  // d is not 15
+	  R[d] = result;
+
+	  /* no flag setting */
 	}
   else
 	{
@@ -1171,6 +1355,7 @@ void add_r2(uint16_t inst)
 	  int carry, overflow;
 	  /* (result, carry, overflow) = AddWithCarry(R[n], shifted, '0', 32) */
 	  AddWithCarry(&result, &carry, &overflow, R[n], shifted, 0, 32);
+
 	  if (d == 15)
 		{
 		  PC = result & 0xFFFFFFFE;
@@ -1224,6 +1409,8 @@ void mov_r1(uint16_t inst)
   d = (D<<3) | d;
 
   uint32_t result = R[m];
+
+  printf("m : %d,\nD : %d,\nd : %d,\nresult :  %d\n", m, D, d, result);
 
   if (d == 15)
 	{
@@ -1387,7 +1574,7 @@ void ldr_r(uint16_t inst)
   uint32_t offset_addr = R[n] + offset;
   /* index is true */
   uint32_t address = offset_addr;
-  
+
   /* R[t] = MemU[address, 4] */
   R[t] = read_word(address);
 
@@ -1437,7 +1624,7 @@ void ldrb_r(uint16_t inst)
   uint32_t offset_addr = R[n] + offset;
   /* index is true */
   uint32_t address = offset_addr;
-  
+
   /* R[t] = MemU[address, 1] */
   R[t] = zeroExtend32(read_byte(address));
 }
@@ -1470,7 +1657,7 @@ void str_5i(uint16_t inst)
   uint32_t t = INST(2, 0);
   uint32_t n = INST(5, 3);
   uint32_t imm5 = INST(10, 6);
-  uint32_t imm32 = zeroExtend32(imm5);
+  uint32_t imm32 = zeroExtend32(imm5 << 2);
   bool index = true;
   bool add = true;
   bool wback = false;
@@ -1487,7 +1674,7 @@ void str_5i(uint16_t inst)
 void ldr_5i(uint16_t inst)
 {
   uint32_t imm5 = INST(10, 6);
-  uint32_t imm32 = zeroExtend32(imm5);
+  uint32_t imm32 = zeroExtend32(imm5 << 2);
   uint32_t n = INST(5, 3);
   uint32_t t = INST(2, 0);
   bool index = true;
@@ -1498,7 +1685,7 @@ void ldr_5i(uint16_t inst)
   uint32_t offset_addr = R[n] + imm32;
   /* index is true */
   uint32_t address = offset_addr;
-  
+
   /* R[t] = MemU[address, 4] */
   R[t] = read_word(address);
 
@@ -1542,7 +1729,7 @@ void ldrb_i(uint16_t inst)
   uint32_t offset_addr = R[n] + imm32;
   /* index is true */
   uint32_t address = offset_addr;
-  
+
   /* R[t] = MemU[address, 1] */
   R[t] = zeroExtend32(read_byte(address));
 
@@ -1555,14 +1742,14 @@ void strh_i(uint16_t inst)
   uint32_t t = INST(2, 0);
   uint32_t n = INST(5, 3);
   uint32_t imm5 = INST(10, 6);
-  uint32_t imm32 = zeroExtend32(imm5);
+  uint32_t imm32 = zeroExtend32(imm5 << 1);
 
   bool index = true;
   bool add = true;
   bool wback = false;
 
   uint32_t offset;
-  
+
   // add is true
   offset = R[n] + imm32;
   // index is true
@@ -1599,7 +1786,7 @@ void str_8i(uint16_t inst)
 {
   uint32_t t = INST(10, 8);
   uint32_t imm8 = INST(7, 0);
-  uint32_t imm32 = zeroExtend32(imm8);
+  uint32_t imm32 = zeroExtend32(imm8 << 2);
   bool index = true;
   bool add = true;
   bool wback = false;
@@ -1628,7 +1815,7 @@ void ldr_8i(uint16_t inst)
   uint32_t offset_addr = R[n] + imm32;
   /* index is true */
   uint32_t address = offset_addr;
-  
+
   /* R[t] = MemU[address, 4] */
   R[t] = read_word(address);
 
@@ -1644,7 +1831,7 @@ void adr(uint16_t inst)
   uint32_t imm32 = imm8 << 2;
 
   /* add is true.
-     result = Align(PC,4) + imm32 */
+	 result = Align(PC,4) + imm32 */
   uint32_t result = (PC & 0xFFFFFFFC)  + imm32;
   R[d] = result;
 }
@@ -1665,9 +1852,9 @@ void add_sp_i1(uint16_t inst)
 
   R[d] = result;
   /* no flag setting form of the instruction supported.
-  APSR.C = carry;
-  APSR.V = overflow;
-  */
+	 APSR.C = carry;
+	 APSR.V = overflow;
+   */
 }
 
 
@@ -1773,8 +1960,8 @@ void push(uint16_t inst)
 	{
 	  if (extract32_(registers, i) == 1)
 		{
-			  write_word(address, R[i]);
-			  address = address + 4;
+		  write_word(address, R[i]);
+		  address = address + 4;
 		}
 	}
 
@@ -2018,16 +2205,16 @@ static void Shift_C(uint32_t* result, int* carry_out, uint32_t value , int value
 static void LSL_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)
 {
   uint64_t extended_x = value << amount;
-  *result = (uint32_t)(extended_x % ( 1 << value_bit));
-  *carry_out = extract32_(*result, value_bit);
+  *result = (uint32_t)(extended_x & ((1 << value_bit)-1));
+  *carry_out = (extended_x >> value_bit) % 2;
 }
 
 static void LSR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)
 {
-  uint64_t extended_x = value >> amount;
+  uint64_t extended_x = (uint64_t)value;
   uint64_t mask = ((1 << value_bit) - 1) << amount;
   *result = (uint32_t)(extended_x & mask) >> amount;
-  *carry_out = extended_x & (1<<(value_bit-1)) >> (value_bit-1);
+  *carry_out = (extended_x & (1<<(amount-1))) >> (amount-1);
 }
 
 static void ASR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)
@@ -2041,8 +2228,8 @@ static void ROR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bi
 {
   uint32_t m = amount % value_bit;
   /* result = LSR(x, m) OR LSL(x, N-m) */
-  int lsr = value >> m;
-  int lsl = value << (value_bit - m);
+  uint32_t lsr = value >> m;
+  uint32_t lsl = value << (value_bit - m);
   *result = lsr | lsl;
   /* carry_out = result <N-1> */
   *carry_out = extract32_(*result, value_bit -1);
@@ -2058,19 +2245,66 @@ static void RRX_C(uint32_t* result, int* carry_out, uint32_t value, int value_bi
 /* N : x,y's bit. */
 static void AddWithCarry(uint32_t* result, int* carry, int* overflow, uint32_t x, uint32_t y, int cin, int N)
 {
-  uint64_t unsigned_sum = x + y + (uint32_t)cin;
-  int64_t signed_sum = signExtend32(x, N) + signExtend32(y, N) +
-	(uint32_t)cin;
-  
-  *result = (uint32_t)(unsigned_sum & 0xFFFFFFFF );
-  
-  if ((*result) == unsigned_sum)
+  uint32_t unsigned_sum = (uint32_t)UInt(x) + (uint32_t)UInt(y) + (uint32_t)UInt(cin);
+  int32_t signed_sum = (int32_t)SInt(x) + (int32_t)SInt(y) + (int32_t)SInt(cin);
+
+  *result = (uint32_t)(unsigned_sum);
+  printf("myresult : %lx\n", *result);
+  printf("result1 : %lx\n", unsigned_sum);
+  printf("result2 : %lx\n", signed_sum);
+  printf("result3 : %lx\n", SInt(*result) );
+  printf("result3 : %lx\n", UInt(*result) );
+
+  if (UInt(*result) == unsigned_sum)
 	*carry = 0;
   else
 	*carry = 1;
 
-  if (signExtend32(*result, 31) == signed_sum)
+  if (SInt(*result) == signed_sum)
 	*overflow = 0;
   else
 	*overflow = 1;
 }
+
+static uint32_t UInt(uint32_t x_in)
+{
+  uint32_t temp_in = x_in;
+  uint32_t x_out = 0;
+  int i;
+  for(i=0; i<32; i++)
+	{
+	  if (temp_in % 2 == 1)
+		{
+		  x_out += 1 << i;
+		}
+	  temp_in /= 2;
+	}
+
+  return x_out;
+}
+
+static int32_t SInt(uint32_t x_in)
+{
+  uint32_t temp_in = x_in;
+  int32_t x_out = 0;
+  int i;
+  for(i=0; i<32; i++)
+	{
+	  if (temp_in % 2 == 1)
+		{
+		  if (i == 31)
+			{
+			  x_out -= 1 << i;
+			}
+		  else
+			{
+			  x_out += 1 << i;
+			}
+		}
+
+	  temp_in /= 2;
+	}
+
+  return x_out;
+}
+
