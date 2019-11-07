@@ -7,7 +7,7 @@
 APSR	iss.h	/^struct APSR {$/;"	s
 APSR	iss.h	/^} APSR;$/;"	v	typeref:struct:APSR
 AS	test/Makefile	/^AS=$(CROSS_COMPILE)as$/;"	m
-ASR_C	thumb.c	/^static void ASR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+ASR_C	thumb.c	/^static void ASR_C(uint32_t* result, int* carry_out, uint32_t value, int amount)$/;"	f	file:
 AddWithCarry	thumb.c	/^static void AddWithCarry(uint32_t* result, int* carry, int* overflow, uint32_t x, uint32_t y, int cin, int N)$/;"	f	file:
 BitCount	thumb.c	/^static int BitCount(uint32_t x)$/;"	f	file:
 C	iss.h	/^  int C;$/;"	m	struct:APSR
@@ -20,11 +20,12 @@ INST32	iss.h	57;"	d
 INST32_	iss.h	58;"	d
 INST_	iss.h	55;"	d
 ISS_H	iss.h	11;"	d
+InitBlock	thumb.c	/^static bool InitBlock(uint32_t cond)$/;"	f	file:
 LDFLAGS	test/Makefile	/^LDFLAGS = -Wl,--gc-sections -nostartfiles$/;"	m
 LDSCRIPT	test/Makefile	/^LDSCRIPT = linkerscript.ld$/;"	m
 LR	iss.h	31;"	d
-LSL_C	thumb.c	/^static void LSL_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
-LSR_C	thumb.c	/^static void LSR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+LSL_C	thumb.c	/^static void LSL_C(uint32_t* result, int* carry_out, uint32_t value, int amount)$/;"	f	file:
+LSR_C	thumb.c	/^static void LSR_C(uint32_t* result, int* carry_out, uint32_t value, int amount)$/;"	f	file:
 LowestSetBit	thumb.c	/^static int LowestSetBit(uint32_t x)$/;"	f	file:
 MEM_SIZE	iss.h	34;"	d
 MSB	iss.h	60;"	d
@@ -34,9 +35,10 @@ OBJDUMP	test/Makefile	/^OBJDUMP=$(CROSS_COMPILE)objdump$/;"	m
 OBJS	test/Makefile	/^OBJS = bubble_sort.o$/;"	m
 PC	iss.h	32;"	d
 R	iss.h	/^uint32_t R[16];$/;"	v
-ROR_C	thumb.c	/^static void ROR_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
-RRX_C	thumb.c	/^static void RRX_C(uint32_t* result, int* carry_out, uint32_t value, int value_bit, int amount)$/;"	f	file:
+ROR_C	thumb.c	/^static void ROR_C(uint32_t* result, int* carry_out, uint32_t value, int amount)$/;"	f	file:
+RRX_C	thumb.c	/^static void RRX_C(uint32_t* result, int* carry_out, uint32_t value, int amount)$/;"	f	file:
 Reset_Handler	test/startup.s	/^Reset_Handler:$/;"	l
+SInt	thumb.c	/^static int32_t SInt(uint32_t x_in)$/;"	f	file:
 SP	iss.h	30;"	d
 SRCS	test/Makefile	/^SRCS = bubble_sort.c$/;"	m
 SRType	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	g	file:
@@ -46,9 +48,10 @@ SRType_LSR	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR
 SRType_ROR	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
 SRType_RRX	thumb.c	/^enum SRType {SRType_LSL, SRType_LSR, SRType_ASR, SRType_ROR, SRType_RRX};$/;"	e	enum:SRType	file:
 STARTUP	test/Makefile	/^STARTUP = startup.s$/;"	m
-Shift	thumb.c	/^static void Shift(uint32_t* result, uint32_t value , int value_bit, enum SRType srtype, int amount, int carry_in)$/;"	f	file:
-Shift_C	thumb.c	/^static void Shift_C(uint32_t* result, int* carry_out, uint32_t value , int value_bit, enum SRType srtype, int amount, int carry_in)$/;"	f	file:
+Shift	thumb.c	/^static void Shift(uint32_t* result, uint32_t value , enum SRType srtype, int amount, int carry_in)$/;"	f	file:
+Shift_C	thumb.c	/^static void Shift_C(uint32_t* result, int* carry_out, uint32_t value , enum SRType srtype, int amount, int carry_in)$/;"	f	file:
 TARGET	test/Makefile	/^TARGET=bubble_sort$/;"	m
+UInt	thumb.c	/^static uint32_t UInt(uint32_t x_in)$/;"	f	file:
 V	iss.h	/^  int V;$/;"	m	struct:APSR
 Z	iss.h	/^  int Z;$/;"	m	struct:APSR
 __HeapBase	test/startup.s	/^__HeapBase:$/;"	l
